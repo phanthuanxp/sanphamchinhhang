@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { products } from "../data/catalog";
-import { filterProducts, findCheckProduct, searchProducts, toggleComparison } from "./catalog";
+import { filterProducts, findCheckProduct, sanitizeComparisonIds, searchProducts, toggleComparison } from "./catalog";
+import { isNavigationActive } from "./navigation";
 
 describe("catalog prototype logic", () => {
   it("searches by product, brand, and model", () => {
@@ -22,5 +23,16 @@ describe("catalog prototype logic", () => {
   it("does not check blank or whitespace-only input", () => {
     expect(findCheckProduct(products, "")).toBeNull();
     expect(findCheckProduct(products, "   ")).toBeNull();
+  });
+  it("sanitizes malformed comparison storage values", () => {
+    const ids = new Set(products.map((product) => product.id));
+    expect(sanitizeComparisonIds({ ids: [] }, ids)).toEqual([]);
+    expect(sanitizeComparisonIds(["iphone-15", "missing", 1, "galaxy-s24", "bose-qc", "xiaomi-air", "lrp-serum"], ids)).toEqual(["iphone-15", "galaxy-s24", "bose-qc", "xiaomi-air"]);
+  });
+  it("sets navigation active by route section", () => {
+    expect(isNavigationActive("/", "/")).toBe(true);
+    expect(isNavigationActive("/kiem-tra", "/")).toBe(false);
+    expect(isNavigationActive("/danh-muc/gia-dung", "/danh-muc/dien-tu")).toBe(true);
+    expect(isNavigationActive("/so-sanh", "/kiem-tra")).toBe(false);
   });
 });
