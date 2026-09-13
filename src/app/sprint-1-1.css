@@ -1,0 +1,12 @@
+:where(a,button,input,select):focus-visible{outline:3px solid var(--accent-400);outline-offset:3px}
+.formError{margin:0;color:#a52a1d;font-weight:700}
+.bottomNav a.active{color:var(--brand-900)}
+@media (max-width:760px){
+.bottomNav a:first-child:not(.active){color:#66746f}
+  .compareTray{bottom:calc(70px + env(safe-area-inset-bottom));z-index:14}
+  body:has(.compareTray){padding-bottom:170px}
+  .homeProducts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;scroll-snap-type:none}
+  .homeProducts .productCard{min-width:0}
+  .homeProducts .productDescription{display:none}
+  .homeProducts .productBody h3{min-height:44px}
+}
