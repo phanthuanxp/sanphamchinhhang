@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./sprint-1-1.css";
 
 export const metadata: Metadata = {
   title: "Sản Phẩm Chính Hãng — Tìm, kiểm tra và so sánh",

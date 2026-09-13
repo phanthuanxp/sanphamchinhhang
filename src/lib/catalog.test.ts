@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { products } from "../data/catalog";
-import { filterProducts, searchProducts, toggleComparison } from "./catalog";
+import { filterProducts, findCheckProduct, searchProducts, toggleComparison } from "./catalog";
 
 describe("catalog prototype logic", () => {
   it("searches by product, brand, and model", () => {
@@ -18,5 +18,9 @@ describe("catalog prototype logic", () => {
     const result = toggleComparison(["a", "b", "c", "d"], "e");
     expect(result.ids).toHaveLength(4);
     expect(result.error).toMatch(/tối đa 4/);
+  });
+  it("does not check blank or whitespace-only input", () => {
+    expect(findCheckProduct(products, "")).toBeNull();
+    expect(findCheckProduct(products, "   ")).toBeNull();
   });
 });

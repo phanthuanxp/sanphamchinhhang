@@ -21,3 +21,14 @@ export function toggleComparison(ids: string[], id: string, maximum = 4) {
   if (ids.length >= maximum) return { ids, error: `Bạn chỉ có thể so sánh tối đa ${maximum} sản phẩm.` };
   return { ids: [...ids, id], error: null };
 }
+
+export function findCheckProduct(products: Product[], input: string) {
+  const term = input.trim().toLocaleLowerCase("vi");
+  if (!term) return null;
+  return products.find((product) => [product.model, product.slug, product.name].some((value) => value.toLocaleLowerCase("vi").includes(term))) ?? null;
+}
+
+export function sanitizeComparisonIds(value: unknown, validIds: Set<string>) {
+  if (!Array.isArray(value)) return [];
+  return value.filter((id): id is string => typeof id === "string" && validIds.has(id)).slice(0, 4);
+}
