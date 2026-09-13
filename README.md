@@ -31,6 +31,8 @@ npm run build
 - `docs/ARCHITECTURE.md`: kiến trúc kỹ thuật.
 - `docs/DATA_GOVERNANCE.md`: quy tắc dữ liệu và xác minh.
 - `docs/ROADMAP.md`: Sprint và mốc nghiệm thu.
+- `docs/DESIGN_BRIEF.md`: giao diện desktop/mobile đã duyệt và design system.
+- `docs/SPRINT_1_CODEX_PROMPT.md`: yêu cầu triển khai Sprint 1 dành cho Codex.
 - `AGENTS.md`: quy tắc dành cho Codex.
 - `CLAUDE.md`: quy tắc dành cho Claude Code.
 
